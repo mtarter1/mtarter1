@@ -121,7 +121,7 @@ const menuButton = document.querySelector('.menu-toggle');
 const navLinks = document.querySelector('.nav-links');
 const brand = document.querySelector('.brand');
 const navActions = document.querySelector('.nav-actions');
-const reviewNavVersion = 'v=review-contact-page-20260805';
+const reviewNavVersion = 'v=review-testing-links-20260903';
 const reviewPage = (page = '', hash = '') => `${reviewBase}${page}?${reviewNavVersion}${hash}`;
 const previewHref = (href) => {
   if (!isReviewPreview) return href;
@@ -135,7 +135,7 @@ const previewHref = (href) => {
     '/industry-links.html': reviewPage('industry-links.html'),
     '/services/': reviewPage('services.html'),
     '/services/monthly-inspections.html': reviewPage('services/monthly-inspections.html'),
-    '/services/compliance-testing.html': reviewPage('services.html', '#compliance-testing'),
+    '/services/compliance-testing.html': reviewPage('services/compliance-testing.html'),
     '/services/third-party-testing.html': reviewPage('services.html', '#third-party-reporting'),
     '/services/hydrostatic-testing.html': reviewPage('services.html', '#hydrostatic-testing'),
     '/services/service-repair.html': reviewPage('parts.html'),
@@ -169,7 +169,7 @@ if (navLinks) {
       <button class="nav-menu-toggle" type="button" aria-expanded="false" aria-label="Open Services menu">&#8964;</button>
       <div class="dropdown-menu">
         <a href="${reviewPage('services/monthly-inspections.html')}">Monthly Inspections</a>
-        <a href="${reviewPage('services.html', '#compliance-testing')}">Testing</a>
+        <a href="${reviewPage('services/compliance-testing.html')}">Testing</a>
         <a href="${reviewPage('parts.html')}">Repairs &amp; Parts</a>
         <a href="${reviewPage('services/operator-training.html')}">Operator Training</a>
       </div>
@@ -573,6 +573,7 @@ if (serviceBrowser) {
   };
   const reviewServiceExplorePages = new Set([
     '/services/monthly-inspections.html',
+    '/services/compliance-testing.html',
     '/services/service-repair.html',
     '/services/operator-training.html',
   ]);
