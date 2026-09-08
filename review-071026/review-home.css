@@ -23,6 +23,39 @@
   border-top-color: var(--green);
 }
 
+/* Keep the review header in its desktop layout on compact laptop/tablet views. */
+@media (min-width: 841px) and (max-width: 920px) {
+  .review-home .nav-wrap {
+    flex-wrap: nowrap;
+    gap: 14px;
+  }
+
+  .review-home .menu-toggle {
+    display: none;
+  }
+
+  .review-home .nav-links {
+    display: flex;
+    order: initial;
+    width: auto;
+    padding: 0;
+    flex-direction: row;
+    align-items: center;
+    gap: 16px;
+    font-size: .88rem;
+  }
+
+  .review-home .brand-name,
+  .review-home .nav-actions .secondary {
+    display: none;
+  }
+
+  .review-home .nav-actions .button {
+    padding-inline: 14px;
+    white-space: nowrap;
+  }
+}
+
 .review-home .hero {
   background:
     radial-gradient(circle at 88% 12%, rgba(97, 220, 164, .24), transparent 27%),
@@ -97,45 +130,6 @@
 .review-home .inquiry-form,
 .review-home .stats-grid {
   box-shadow: 0 1px 0 rgba(12, 74, 47, .03);
-}
-
-.review-home .faq-preview-layout {
-  display: grid;
-  gap: 28px;
-}
-
-.review-home .faq-preview-intro {
-  display: flex;
-  align-items: end;
-  justify-content: space-between;
-  gap: 32px;
-}
-
-.review-home .faq-preview-intro h2 {
-  margin-bottom: 10px;
-}
-
-.review-home .faq-preview-intro > div > p:not(.eyebrow) {
-  margin: 0;
-  color: var(--muted);
-  line-height: 1.55;
-}
-
-.review-home .faq-preview-intro .button {
-  flex: 0 0 auto;
-}
-
-.review-home .faq-preview-layout .faq-grid {
-  grid-template-columns: 1fr;
-  gap: 12px;
-}
-
-@media (max-width: 760px) {
-  .review-home .faq-preview-intro {
-    align-items: flex-start;
-    flex-direction: column;
-    gap: 20px;
-  }
 }
 
 .review-home input:focus,
@@ -296,12 +290,6 @@
   background: rgba(97, 220, 164, .11);
 }
 
-.review-home .process-icon img {
-  display: block;
-  width: 40px;
-  height: 40px;
-}
-
 .review-home .process-icon::before,
 .review-home .process-icon::after {
   position: absolute;
@@ -378,8 +366,7 @@
 
 .review-home .segment-visual {
   position: relative;
-  min-height: 0;
-  aspect-ratio: 3 / 2;
+  min-height: 260px;
   overflow: hidden;
   border: 1px solid rgba(255, 255, 255, .18);
   border-radius: 16px;
@@ -387,16 +374,10 @@
   box-shadow: 0 16px 34px rgba(5, 37, 27, .18);
 }
 
-.review-home .tab-panel-layout {
-  grid-template-columns: minmax(0, 1fr) minmax(360px, 44%);
-}
-
 .review-home .segment-visual .tab-panel-image {
   width: 100%;
   height: 100%;
-  min-height: 0;
-  object-fit: cover;
-  object-position: center;
+  min-height: 260px;
   border-radius: 0;
   filter: saturate(1.03) contrast(1.04);
 }
@@ -616,10 +597,6 @@
 }
 
 @media (max-width: 900px) {
-  .review-home .tab-panel-layout {
-    grid-template-columns: 1fr;
-  }
-
   .review-home .featured-article-layout {
     grid-template-columns: 1fr;
   }
@@ -637,7 +614,9 @@
   }
 
   .review-home .segment-visual,
-  .review-home .segment-visual .tab-panel-image { min-height: 0; }
+  .review-home .segment-visual .tab-panel-image {
+    min-height: 220px;
+  }
 }
 
 @media (max-width: 640px) {
@@ -666,4 +645,35 @@
   .review-home .segment-badge {
     grid-template-columns: 38px minmax(0, 1fr);
   }
+}
+/* Homepage state badges link directly to each filtered blog library. */
+.review-home .brand-panel-states {
+  margin-top: 18px;
+}
+
+.review-home .brand-panel-states a {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 7px 9px;
+  border: 1px solid rgba(255, 255, 255, .22);
+  border-radius: 7px;
+  color: inherit;
+  font-size: .76rem;
+  font-weight: 750;
+  line-height: 1;
+  text-decoration: none;
+  transition: background 160ms ease, border-color 160ms ease, color 160ms ease, transform 160ms ease;
+}
+
+.review-home .brand-panel-states a:hover {
+  border-color: var(--green);
+  background: var(--green);
+  color: var(--navy);
+  transform: translateY(-1px);
+}
+
+.review-home .brand-panel-states a:focus-visible {
+  outline: 3px solid #75b8ff;
+  outline-offset: 3px;
 }
